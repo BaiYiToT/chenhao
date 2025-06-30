@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输出</title>
+</head>
+<body>
+    <h1>输出</h1>
+    <p id="demo">测试输出</p>
+    <button onclick="myFunction()">弹出提示框</button></br>
+    <script>
+        window.alert("Hello!");
+        document.getElementById("demo").innerHTML = "Hello, world!";
+        document.write(Date());
+        function myFunction() {
+            document.write("弹出提示框");
+        }
+        console.log("写入控制台!");
+    </script>
+</body>
+</html>

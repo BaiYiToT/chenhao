@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式</title>
+</head>
+<body>
+    <!--
+        1.语法：/正则表达式主体/修饰符(可选)
+        2.字符串方法：
+            I）search() 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置
+            II）replace() 方法用于在字符串中用一些字符串替换另一些字符串，或替换一个与正则表达式匹配的子串
+        3.常用修饰符：
+            I）i 忽略大小写
+            II）g 全局匹配，即找到所有匹配的子串，而不是只找到第一个匹配的子串
+            III）m 多行匹配，即在多行模式下进行匹配，^和$匹配每一行的开始和结束
+        4.模式：
+            I）[abc]	查找方括号之间的任何字符
+            II）[0-9]	查找任何从 0 至 9 的数字
+            III）(x|y)	查找任何以 | 分隔的选项
+        5.元字符：
+            I）\d	查找数字
+            II）\D	查找非数字
+            III）\w	查找单词字符（字母、数字或下划线）
+            IV）\W	查找非单词字符
+            V）\s	查找空白字符（空格、制表符等）
+            VI）\S	查找非空白字符
+            VII）\b	查找单词边界
+            VIII）\B	查找非单词边界
+            IX）\n	匹配换行符
+            X）\t	匹配制表符
+            XI）\f	匹配换页符
+            XII）\r	匹配回车符
+            XIII）.	匹配除换行符、制表符、回车符以外的任何单个字符
+            XIV）^	匹配字符串的开始
+            XV）$	匹配字符串的结束
+            XVI）|	匹配或
+            XVII）?	匹配前面的子表达式零次或一次
+            XVIII）*	匹配前面的子表达式零次或多次
+            XIX）+	匹配前面的子表达式一次或多次
+            XX）{n}	匹配前面的子表达式恰好 n 次
+            XXI）{n,}	匹配前面的子表达式至少 n 次
+            XXII）{n,m}	匹配前面的子表达式至少 n 次，至多 m 次
+            XXIII）\uxxxx	查找以十六进制数 xxxx 规定的 Unicode 字符。
+        6.量词：
+            I）n+	匹配任何包含至少一个 n 的字符串
+            II）n*	匹配任何包含零个或多个 n 的字符串
+            III）n?	匹配任何包含零个或一个 n 的字符串
+            IV）n{3}	匹配任何包含恰好三个 n 的字符串
+            V）n{3,}	匹配任何包含三个或更多 n 的字符串
+            VI）n{3,5}	匹配任何包含三个到五个 n 的字符串
+            VII）a|b	匹配 a 或 b
+        7.方法：
+            RegExp 对象是一个预定义了属性和方法的正则表达式对象，可以通过 new RegExp() 构造函数来创建。
+            I）test() 方法用于测试一个字符串是否匹配某个正则表达式，如果字符串中含有匹配的文本，则返回 true，否则返回 false
+            II）exec() 方法用于用于检索字符串中的正则表达式的匹配，该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null
+    -->
+    
+    <p><strong>search() 方法使用正则表达式</strong></p>
+    <p id="demo"></p>
+    <button onclick="myFunction()">点我</button>
+    <script>
+        function myFunction() {
+            var str = "Visit Runoob!"; 
+            var n = str.search(/Runoob/i);  //检索字符串中 "Runoob" 子字符串，忽略大小写
+            document.getElementById("demo").innerHTML = n;
+        }
+    </script>
+
+    <p><strong>search() 方法使用字符串</strong></p>
+    <p id="demo1"></p>
+    <button onclick="myFunction1()">点我</button>
+    <script>
+        function myFunction1() {
+            var str = "Visit Runoob!"; 
+            var n = str.search("Runoob");  //检索字符串中 "Runoob" 子字符串, 并显示匹配的起始位置
+            document.getElementById("demo1").innerHTML = n;
+        }
+    </script>
+
+
+    <p><strong>replace() 方法使用正则表达式</strong></p>
+    <p id="demo2">Visit Microsoft!</p>
+    <button onclick="myFunction2()">点我</button>
+    <script>
+        function myFunction2() {
+            var str = document.getElementById("demo2").innerHTML; 
+            var txt = str.replace(/microsoft/i,"Runoob");
+            document.getElementById("demo2").innerHTML = txt;
+        }
+    </script>
+
+    <p><strong>replace() 方法使用字符串</strong></p>
+    <p id="demo3">Visit Microsoft!</p>
+    <button onclick="myFunction3()">点我</button>
+    <script>
+        function myFunction3() {
+            var str = document.getElementById("demo3").innerHTML; 
+            var txt = str.replace("Microsoft","Runoob");
+            document.getElementById("demo3").innerHTML = txt;
+        }
+    </script>
+
+    <p><strong>test() 方法使用正则表达式</strong></p>
+    <!--如果字符串中含有匹配的文本，则返回 true，否则返回 false-->
+    <script>
+        var patt1=new RegExp("e");
+        document.write(patt1.test("The best things in life are free"));
+        // /e/.test("The best things in life are free!")
+    </script>
+
+    <p><strong>exec() 方法使用字符串</strong></p>
+    <!--该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null-->
+    <script>
+        var patt1=new RegExp("e");
+        document.write(patt1.exec("The best things in life are free"));
+        // /e/.exec("The best things in life are free!")
+    </script>
+</body>
+</html>

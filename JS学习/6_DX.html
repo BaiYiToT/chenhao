@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+
+    <script>
+        var person = {
+            firstName:"John", 
+            lastName:"Doe", 
+            age:50, 
+            eyeColor:"blue"
+            };
+        //你可以使用 .property 或 ["property"]. 两种方式访问对象的属性。
+        document.getElementById("demo").innerHTML = 
+            person.firstName + " " + 
+            person["lastName"] + " is " + 
+            person.age + " years old and has " + 
+            person["eyeColor"] + " eyes.";
+
+        //对象方法作为一个函数定义存储在对象属性中
+        var person1 = {
+            firstName: "John",
+            lastName : "Doe",
+            id : 5566,
+            fullName : function() 
+                {
+                    return this.firstName + " " + this.lastName;
+                }
+        };
+        document.getElementById("demo1").innerHTML = "加括号输出函数执行结果："+person1.fullName();
+        document.getElementById("demo2").innerHTML = "不加括号输出函数表达式："+person1.fullName;
+
+    </script>
+</body>
+</html>

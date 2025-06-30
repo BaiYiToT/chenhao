@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For循环</title>
+</head>
+<body>
+    <script>
+        cars=["BMW", "Volvo", "Saab", "Ford"];
+        for(var i=0; i<cars.length; i++){   //for(var i=0; l=cars.length; i<l; i++){
+            document.write(cars[i] + "<br>");
+        }
+    </script><br>
+
+    <script>
+        cars=["BMW", "Volvo", "Saab", "Ford"];
+        var i=1, len=cars.length;
+        for(; i<len; i++){
+            document.write(cars[i] + "<br>");
+        }
+    </script><br>
+    
+    <script>
+        cars=["BMW", "Volvo", "Saab", "Ford"];
+        var i=2, len=cars.length;
+        for(; i<len; ){
+            document.write(cars[i] + "<br>");
+            i++;
+        }
+    </script><br>
+
+    <p id="demo"></p>
+    <button onclick="myFunction()">点击循环5次</button>
+    <script>
+        function myFunction(){
+            var x="";
+            for(var i=0; i<5; i++){
+                x+="该数字为"+i+"<br>";
+            }
+            document.getElementById("demo").innerHTML=x;
+        }
+    </script><br>
+
+    <p>遍历对象</p>
+    <p id="demo1"></p>
+    <button onclick="myFunction1()">点击遍历对象</button>
+    <script>
+        function myFunction1(){
+            var txt="";
+            var person = {fname:"John", lname:"Doe", age:25};
+            for (var x in person) {
+                txt += person[x] + " ";
+            }
+            document.getElementById("demo1").innerHTML=txt;
+        }
+    </script>
+</body>
+</html>

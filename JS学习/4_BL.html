@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+</head>
+<body>
+    <p>变量</p>
+    <button onclick="myFunction()">点击</button>
+    <p id="demo"></p>
+    <p> 假设y=5,计算x=y+2,并显示结果 </p>
+    <button onclick="myFunction2()">点击</button>
+    <p id="demo2"></p>
+    
+    </p>
+
+    <script>
+        var x = 10;
+        var y = 20;
+        var z = x + y;
+        document.write(x + "<br>"); // 输出变量x的值，如果没有定义变量x，则输出undefined
+        document.write(y + "<br>"); // 输出变量y的值，如果没有定义变量y，则输出undefined
+        document.write(z + "<br>"); // 输出变量z的值，如果没有定义变量z，则输出undefined
+
+        var pi=3.14;
+        var name="Tom";
+        var answer='Yes I am!';
+        document.write(pi + "<br>"); // 输出变量pi的值，如果没有定义变量pi，则输出undefined
+        document.write(name + "<br>"); // 输出变量name的值，如果没有定义变量name，则输出undefined
+        document.write(answer + "<br>"); // 输出变量answer的值，如果没有定义变量answer，则输出undefined
+
+        function myFunction() {
+            var carname="Volvo";
+            document.getElementById("demo").innerHTML = carname;
+            }
+
+        function myFunction2() {
+            var y=5;
+            var x=y+2;
+            var result=document.getElementById("demo2");
+            result.innerHTML="x="+x;
+            }
+            
+    </script>
+</body>
+</html>

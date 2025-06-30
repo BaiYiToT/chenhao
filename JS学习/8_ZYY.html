@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域</title>
+</head>
+<body>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+
+    <script>
+        // 局部作用域
+        myFunction();
+        document.getElementById("demo1").innerHTML = "carName1的类型是:" + typeof carName1;
+        function myFunction() {
+            var carName1 = "宝马";
+        }
+
+        // 全局变量
+        var carName2 = "奔驰";
+        myFunction2();
+        function myFunction2() {
+            document.getElementById("demo2").innerHTML = "carName2的类型是:" + typeof carName2;
+        }
+        // 没有声明的变量会自动成为全局变量
+        myFunction3();
+        document.getElementById("demo3").innerHTML = "carName3是:" + carName3;
+        function myFunction3() {
+            carName3 = "大众";
+        }
+
+        // HTML中所有全局变量都会成为window变量
+        myFunction4();
+        document.getElementById("demo4").innerHTML = "window.carName4是:" + window.carName4;
+        function myFunction4() {
+            window.carName4 = "丰田";
+        }
+
+    </script>
+</body>
+</html>

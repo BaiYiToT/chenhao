@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>错误捕捉</title>
+</head>
+<body>
+    <!--
+    JavaScript 抛出（throw）错误：当错误发生时，当事情出问题时，JavaScript 引擎通常会停止，并生成一个错误消息。
+        描述这种情况的技术术语是：JavaScript 将抛出一个错误。
+    JavaScript try、catch与finally：
+        try 语句允许我们定义在执行时进行错误测试的代码块。
+        catch 语句允许我们定义当 try 代码块发生错误时，所执行的代码块。
+        finally 语句不论之前的 try 和 catch 中是否产生异常都会执行该代码块
+        JavaScript 语句 try 和 catch 是成对出现的。
+        语法
+            try {
+                ...    //异常的抛出
+            } catch(e) {
+               ...    //异常的捕获与处理
+            } finally {
+            ...    //结束处理
+        }
+    -->
+    <script>
+        var txt="";
+        function message() {
+            try {
+                adddlert("Welcome guest!");
+            } catch(err) {
+                txt="本页出现错误 \n\n";
+                txt+="错误描述： " + err.message + "\n\n";
+                txt+="点击确定继续 \n\n";
+                alert(txt);
+            }
+        }
+    </script>
+    <input type="button" value="点击我" onclick="message()" />
+
+
+
+
+    <p>不管输入是否正确，输入框都会再输入后清空。</p>
+    <p>请输入 5 ~ 10 之间的数字：</p>
+
+    <input id="demo" type="text">
+    <button type="button" onclick="myFunction()">测试输入</button>
+    <p id="message"></p>
+
+    <script>
+    function myFunction() {
+    var x, message;
+    x = document.getElementById("demo").value;
+    message = document.getElementById("message");
+    message.innerHTML = "";
+    try { 
+        if(x == "") throw "值是空的";
+        if(isNaN(x)) throw "值不是一个数字";
+        x = Number(x) ;
+        if(x > 10) throw "太大";
+        if(x < 5) throw "太小";
+        message.innerHTML = "输入正确：" + x;
+    }
+    catch(err) {
+        message.innerHTML = "错误: " + x + " " + err;
+    }
+    finally {
+        document.getElementById("demo").value = "";
+    }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Break and Continue</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <button onclick="myFunction()">Click me</button>
+    <script>
+        function myFunction() {
+            for (var x="", i=0; i<10; i++){
+                if (i==3){ continue; }
+                if (i==8){ break; }
+                x+="该数字为"+i+"<br>";
+            }
+            document.getElementById("demo").innerHTML = x;
+        }
+    </script>
+
+    <p id="demo1"></p>
+    <button onclick="myFunction1()">Click me</button>
+    <script>
+        function myFunction1() {
+            var x = "", i=0;
+            while (i < 10) {
+                if (i==3){ i++; continue; }
+                if (i==8){ i++;break; }
+                x+="该数字为"+i+"<br>";
+                i++;
+            }
+            document.getElementById("demo1").innerHTML = x;
+        }
+    </script><br><br>
+
+
+    <script>
+        cars=["BMW","Volvo","Saab","Ford"];
+        list:{
+            document.write(cars[0] + "<br>"); 
+            document.write(cars[1] + "<br>"); 
+            document.write(cars[2] + "<br>"); 
+            break list;
+            document.write(cars[3] + "<br>"); 
+            document.write(cars[4] + "<br>"); 
+            document.write(cars[5] + "<br>"); 
+        }
+    </script><br><br>
+
+    <!-- 打标签可以在多层循环的时候控制外层循环-->
+    <p id="demo2"></p>
+    <button onclick="myFunction2()">Click me</button>
+    <script>
+        function myFunction2() {
+            outerloop:
+            for (var i = 0; i < 10; i++){
+                innerloop:
+                for (var j = 0; j < 10; j++){
+                    if (j > 3){ break; }
+                    if (i == 2){ break innerloop; }
+                    if (i == 4){ break outerloop; }
+                    document.write("i=" + i + " j=" + j + "<br>");
+                }
+            }
+        }
+    </script><br><br>
+</body>
+</html>

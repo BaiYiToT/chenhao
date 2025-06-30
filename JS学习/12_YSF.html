@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运算符</title>
+</head>
+<body>
+    <button onclick="myFunction1()">点击计算</button>
+    <p id="demo1"></p>
+    <script>
+        function myFunction1() {
+            y=5;
+            z=2;
+            x=y+z;
+            document.getElementById("demo1").innerHTML = "结果：" + x;
+        }
+    </script>
+
+
+    <button onclick="myFunction2()">点击计算</button>
+    <p id="demo2"></p>
+    <script>
+        function myFunction2() {
+            txt1="What a very ";    //要想在两个字符串之间增加空格，需要把空格插入一个字符串之中
+            txt2="nice day";
+            txt3=txt1+txt2;    //txt3=txt1+" "+txt2;
+            document.getElementById("demo2").innerHTML = txt3;
+        }
+    </script>
+
+    <button onclick="myFunction3()">点击计算</button>
+    <p id="demo3"></p>
+    <script>
+        function myFunction3() {
+            var x=5+5;
+            var y="5"+5;
+            var z="Hello"+5;
+            var demoP=document.getElementById("demo3");
+            demoP.innerHTML=x + "<br>" + y + "<br>" + z;
+        }
+    </script>
+</body>
+</html>

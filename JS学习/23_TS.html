@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>调试</title>
+</head>
+<body>
+    <script>
+        a = 5;
+        b = 6;
+        c = a + b;
+        console.log(c); //F12打开控制台，可以看到输出结果
+
+
+        var x = 15 * 5;
+        debugger;   // 在这里设置断点，可以进入调试模式
+        document.getElementById("demo").innerHTML = x;  // 输出x的值
+    </script>
+</body>
+</html>

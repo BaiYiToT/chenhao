@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件判断语句</title>
+</head>
+<body>
+    <p>如果时间早于20点会问候"Good Day!"</p>
+    <p id="demo1"></p>
+    <button onclick="myFunction1()">点击我</button>
+    <script>
+        function myFunction1() {
+            var x="";
+            var time=new Date().getHours();
+            if (time<20) {
+                x="Good Day!";
+            }
+            else {
+                x="Good Evening!";
+            }
+            document.getElementById("demo1").innerHTML=x;
+        }
+    </script>
+
+
+
+    <p>如果时间小于 12:00，则生成问候 "Good morning"，如果时间大于 12:00 小于 20:00，则生成问候 "Good day"，否则生成问候 "Good evening"</p>
+    <p id="demo2"></p>
+    <button onclick="myFunction2()">点击我</button>
+    <script>
+        function myFunction2() {
+            var x="";
+            var time2=new Date().getHours();
+            if (time2<12) {
+                x="Good morning!";
+            }
+            else if (time2>=12 && time2<20) {
+                x="Good day!";
+            }
+            else {
+                x="Good evening!";
+            }
+            document.getElementById("demo2").innerHTML=x;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS严格模式</title>
+    <!-- JavaScript 严格模式（strict mode）即在严格的条件下运行。 
+    使用 "use strict" 指令
+    "use strict" 指令在 JavaScript 1.8.5 (ECMAScript5) 中新增。
+    它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。
+    "use strict" 的目的是指定代码在严格条件下执行。
+    严格模式下你不能使用未声明的变量。
+    
+    为什么使用严格模式:
+        消除 Javascript 语法的一些不合理、不严谨之处，减少一些怪异行为。
+        消除代码运行的一些不安全之处，保证代码运行的安全。
+        提高编译器效率，增加运行速度。
+        为未来新版本的Javascript做好铺垫。
+    "严格模式"体现了Javascript更合理、更安全、更严谨的发展方向，包括IE 10在内的主流浏览器，都已经支持它，
+        许多大项目已经开始全面拥抱它。
+    另一方面，同样的代码，在"严格模式"中，可能会有不一样的运行结果；一些在"正常模式"下可以运行的语句，
+        在"严格模式"下将不能运行。掌握这些内容，有助于更细致深入地理解Javascript，让你变成一个更好的程序员。
+        
+        注：此文件是考虑严格模式的一些限制，并在控制台给出相应的报错信息，文件中有错误很正常-->
+</head>
+<body>
+    <script>
+        // 不允许使用未声明的变量
+        "use strict";
+        x1=3.14; // 报错 "x1" is not defined
+    </script>
+    <script>
+        "use strict"; 
+        myFunction();
+        function myFunction() {
+            y1=10; // 报错 "y1" is not defined
+        }
+    </script>
+    <script>
+        // 在函数内部使用只在函数内报错
+        m1=3.14; // 不报错
+        myFunction();
+        function myFunction() {
+            "use strict";
+            n1=10; // 报错 "n1" is not defined
+        }
+    </script>
+
+    <h4>严格模式的限制</h4>
+    <p><strong>1.不允许使用未声明的变量</strong></p>
+    <script>
+        // 不允许使用未声明的变量
+        "use strict";
+        a=3.14; // 报错 "a" is not defined
+    </script>
+    <script>
+        // 不允许使用未声明的对象
+        "use strict";
+        b={p1:10, p2:20};   // 报错 "b" is not defined
+    </script>
+
+    <p><strong>2.不允许删除变量或对象</strong></p>
+    <script>
+        // 不允许删除变量或对象
+        "use strict";
+        var c=3.14;
+        delete c;   // 报错 "c" is not deletable
+    </script>
+
+    <p><strong>3.不允许删除函数</strong></p>
+    <script>
+        // 不允许删除函数
+        "use strict";
+        function d(p1, p2) {};
+        delete d; // 报错 Delete of an unqualified identifier in strict mode.
+    </script>
+
+    <p><strong>4.不允许变量重名</strong></p>
+    <script>
+        // 不允许变量重名
+        "use strict";
+        function e(p1, p1) {}; // 报错 Delete of an unqualified identifier in strict mode.
+    </script>
+
+    <p><strong>5.不允许使用八进制</strong></p>
+    <script>
+        // 不允许使用八进制
+        "use strict";
+        var f=010; // 报错 Duplicate parameter name not allowed in this context
+    </script>
+
+    <p><strong>6.不允许使用转义字符 \</strong></p>
+    <script>
+        // 不允许使用转义字符
+        "use strict";
+        var g="hello\nworld"; // 报错 Octal literals are not allowed in strict mode.
+    </script>
+
+    <p><strong>7.不允许对只读属性赋值</strong></p>
+    <script>
+        // 不允许对只读属性赋值
+        "use strict";
+        var h={};
+        Object.defineProperty(h, "x", {value: 0, writable: false});
+        h.x = 3.14; // 报错 Cannot assign to read only property 'x' of object '#<Object>'
+    </script>
+
+    <p><strong>8.不允许对一个使用getter方法读取的属性进行赋值</strong></p>
+    <script>
+        // 不允许对一个使用getter方法读取的属性进行赋值
+        "use strict";
+        var i={get x() { return 0; }};
+        i.x = 3.14; // Cannot set property x of #<Object> which has only a getter
+    </script>
+
+    <p><strong>9.不允许删除一个不允许删除的属性</strong></p>
+    <script>
+        // 不允许删除一个不允许删除的属性
+        "use strict";
+        delete Object.prototype; // 报错 Cannot delete property 'prototype' of function Object() { [native code] }
+    </script>
+
+    <p><strong>10.变量名不能使用 "eval" 字符串</strong></p>
+    <script>
+        // 变量名不能使用 "eval" 字符串
+        "use strict";
+        var eval = 3.14; // 报错 Unexpected eval or arguments in strict mode
+    </script>
+
+    <p><strong>11.变量名不能使用 "arguments" 字符串</strong></p>
+    <script>
+        // 变量名不能使用 "arguments" 字符串
+        "use strict";
+        var arguments = 3.14; // 报错 Unexpected eval or arguments in strict mode
+    </script>
+
+    <p><strong>12.不允许使用以下这种语句（With语句）</strong></p>
+    <script>
+        // 不允许使用以下这种语句
+        "use strict";
+        with (Math) { x=cos(2); }   // 报错 Strict mode code may not include a with statement
+    </script>
+
+    <p><strong>13.由于一些安全原因，在作用域 eval() 创建的变量不能被调用</strong></p>
+    <script>
+        // 由于一些安全原因，在作用域 eval() 创建的变量不能被调用
+        "use strict";
+        eval=("var j=3.14");
+        alert (x); // 报错 Unexpected eval or arguments in strict mode
+    </script>
+
+    <p><strong>14.不允许使用 "this" 关键字指向全局对象</strong></p>
+    <script>
+        // 不允许使用 "this" 关键字指向全局对象
+        "use strict";
+        function k(){ return !this; }   // 返回false，因为"this"指向全局对象，"!this"就是false
+        function k(){ 
+            "use strict";
+            return !this;
+        }  // 返回true，因为严格模式下，this的值为undefined，所以"!this"为true。
+        //因此，使用构造函数时，如果忘了加new，this不再指向全局对象，而是报错。
+        function l(){
+            "use strict";
+            this.a = 1;
+        };
+        l();// 报错 Cannot set properties of undefined (setting 'a')
+    </script>
+</body>
+</html>
